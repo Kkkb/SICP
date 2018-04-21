@@ -96,13 +96,13 @@
 ```scheme
 (define (new-if predicate then-clause else-clause)
   (cond (predicate then-clause)
-		(else else-clause)))
+	(else else-clause)))
 
 (define (sqrt-iter guess x)
   (new-if (good-enough? guess x)
-  		  guess
-		  (sqrt-iter (improve guess x)
-		  			 x)))			 
+  	  guess
+	  (sqrt-iter (improve guess x)
+		     x)))			 
 ```
 空间不足，程序终止， `new-if` 的两个分支 `then-clause` 和 `else-clause` 都被执行
 
@@ -111,9 +111,9 @@
 ```scheme
 (define (sqrt-iter guess x)
   (if (good-enough? guess (improve guess x))
-	  guess
-	  (sqrt-iter (improve guess x)
-				 x)))
+      guess
+      (sqrt-iter (improve guess x)
+		 x)))
 
 (define (improve guess x)
   (average guess (/ x guess)))
@@ -139,17 +139,17 @@
 (define (cube-iter guess x)
   (if (good-enough? guess (improve guess x))
       guess
-	  (cube-iter (improve guess x)
-	  			 x)))
+      (cube-iter (improve guess x)
+	  	 x)))
 
 (define (improve guess x)
   (/ (+ (/ x (square guess)) (+ guess guess))
-  	 3))
+     3))
 
 (define (good-enough? old-guess new-guess)
   (> 0.01
-	  (/ (abs (- new-guess old-guess))
-	     old-guess)))
+     (/ (abs (- new-guess old-guess))
+	old-guess)))
 
 (define (square x)
   (* x x))
@@ -190,10 +190,10 @@
 ```scheme
 (define (A x y)
   (cond ((= y 0) 0)
-  		((= x 0) (* 2 y))
-		((= y 1) 2)
-		(else (A (- x 1)
-				 (A x (- y 1))))))
+  	((= x 0) (* 2 y))
+	((= y 1) 2)
+	(else (A (- x 1)
+		 (A x (- y 1))))))
 ```
 
 ```scheme
@@ -218,9 +218,9 @@
 ```scheme
 (define (f n)
   (cond ((< n 3) n)
-  		(else (+ (f (- n 1))
-			     (* 2 (f (- n 2)))
-				 (* 3 (f (- n 3)))))))
+  	(else (+ (f (- n 1))
+		 (* 2 (f (- n 2)))
+		 (* 3 (f (- n 3)))))))
 ```
 
 迭代计算过程
@@ -230,19 +230,19 @@
 
 (define (f-iter a b c count)
   (if (= count 0)
-  	  c
-	  (f-iter (+ a
-		  		 (+ b b)
-				 (+ c c c)) a b (- count 1))))
+      c
+      (f-iter (+ a
+	         (+ b b)
+	         (+ c c c)) a b (- count 1))))
 ```
 
 ## Exercise 1.12
 ```scheme
 (define (pascal row col)
   (cond ((> col row) (error "unvalid col value"))
-		((or (= col 0) (= row col)) 1)
-		(else (+ (pascal (- row 1) (- col 1))
-				 (pascal (- row 1) col)))))
+	((or (= col 0) (= row col)) 1)
+	(else (+ (pascal (- row 1) (- col 1))
+		 (pascal (- row 1) col)))))
 ```
 
 ## Exercise 1.13
