@@ -240,10 +240,143 @@
 ```scheme
 (define (pascal row col)
   (cond ((> col row) (error "unvalid col value"))
-	((or (= col 0) (= row col)) 1)
-	(else (+ (pascal (- row 1) (- col 1))
-		 (pascal (- row 1) col)))))
+  ((or (= col 0) (= row col)) 1)
+  (else (+ (pascal (- row 1) (- col 1))
+	   (pascal (- row 1) col)))))
 ```
 
 ## Exercise 1.13
+
 [see](http://sicp.readthedocs.io/en/latest/chp1/13.html)
+
+## Exercise 1.14
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/14.html)
+
+```scheme
+(define (count-change amount)
+  (cc amount 5))
+
+(define (cc amount kinds-of-coins)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= kinds-of-coins 0)) 0)
+	(else (+ (cc amount
+	             (- kinds-of-coins 1))
+                 (cc (- amount
+                        (first-denomination kinds-of-coins))
+                     kinds-of-coins)))))
+
+(define (first-denomination kinds-of-coins)
+  (cond ((= kinds-of-coins 1) 1)
+        ((= kinds-of-coins 2) 5)
+	((= kinds-of-coins 3) 10)
+	((= kinds-of-coins 4) 25)
+	((= kinds-of-coins 5) 50)))
+```
+
+## Exercise 1.15
+a) 3次？
+```scheme
+(sine 12.15)
+(p (sine 4.05))
+(p (p (sine 1.35)))
+(p (p (p (sine 0.45))))
+```
+
+b) 时间、空间复杂度为 O(loga)
+
+## Exercise 1.16
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/16.html)
+
+## Exercise 1.17
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/17.html)
+
+## Exercise 1.18
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/18.html)
+
+## Exercise 1.19
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/19.html)
+
+## Exercise 1.20
+应用序求值，4 次 `remainder` 运算
+```scheme
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 40 6)
+(gcd 6 (remainder 40 6))
+(gcd 6 4)
+(gcd 4 (remainder 6 4))
+(gcd 4 2)
+(gcd 2 (remainder 4 2))
+(gcd 2 0)
+2
+```
+
+正则序求值，`remainder` 有运算次数比应用序大许多
+```scheme
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd (remainder 206 40)
+     (remainder 40 (remainder 206 40)))
+(gcd (remainder 40 (remainder 206 40))
+     (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+;...
+```
+
+## Exercise 1.21
+
+```scheme
+> (smallest-divisor 199)
+199
+
+> (smallest-divisor 1999)
+1999
+
+> (smallest-divisor 19999)
+7
+```
+
+## Exercise 1.22
+?
+```scheme
+(define (time-prime-test n)
+  (newline)
+  (display n)
+  (start-prime-test n (runtime)))
+
+(define (start-prime-test n start-time)
+  (if (prime? n)
+      (report-prime (- (runtime) strat-time))))
+
+(define (report-prime elapsed-time)
+  (display " *** ")
+  (display elapsed-time))
+```
+
+## Exercise 1.23
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/23.html)
+
+## Exercise 1.24
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/24.html)
+
+## Exercise 1.25
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/25.html)
+
+## Exercise 1.26
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/26.html)
+
+## Exercise 1.27
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/27.html)
+
+## Exercise 1.28
+
+[see](http://sicp.readthedocs.io/en/latest/chp1/28.html)
