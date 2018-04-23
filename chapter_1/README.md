@@ -380,3 +380,12 @@ b) 时间、空间复杂度为 O(loga)
 ## Exercise 1.28
 
 [see](http://sicp.readthedocs.io/en/latest/chp1/28.html)
+
+...
+
+## Exercise 1.34
+```scheme
+(define (f g) (g 2))
+(f f)
+```
+not a procedure
